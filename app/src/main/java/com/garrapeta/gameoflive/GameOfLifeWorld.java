@@ -45,6 +45,73 @@ public class GameOfLifeWorld {
         matrix[x][y] = alive;
     }
 
+    public int getLivingNeighbours(int x, int y) {
+        int count = 0;
+
+        // left up
+        if (isAlive(getLeft(x), getUp(y))) {
+            count++;
+        }
+
+        // up
+        if (isAlive(x, getUp(y))) {
+            count++;
+        }
+
+        // right up
+        if (isAlive(getRight(x), getUp(y))) {
+            count++;
+        }
+
+        // right
+        if (isAlive(getRight(x), y)) {
+            count++;
+        }
+
+        // right down
+        if (isAlive(getRight(x), getDown(y))) {
+            count++;
+        }
+
+        // down
+        if (isAlive(x, getDown(y))) {
+            count++;
+        }
+
+        // left down
+        if (isAlive(getLeft(x), getDown(y))) {
+            count++;
+        }
+
+        // left
+        if (isAlive(getLeft(x), y)) {
+            count++;
+        }
+
+
+        return count;
+    }
+
+    private int getLeft(int x) {
+        int cols = getCols();
+        return (cols + x - 1) % cols;
+    }
+
+    private int getUp(int y) {
+        int rows = getRows();
+        return (rows + y - 1) % rows;
+    }
+
+    private int getRight(int x) {
+        int cols = getCols();
+        return (x + 1) % cols;
+    }
+
+    private int getDown(int y) {
+        int rows = getRows();
+        return (y + 1) % rows;
+    }
+
     public void onCellClicked(int x, int y) {
         setAlive(x, y, !isAlive(x, y));
     }
@@ -60,36 +127,5 @@ public class GameOfLifeWorld {
         }
     }
 
-    public int getAliveNeighbours(int x, int y) {
-        int count = 0;
 
-        int cols = getCols();
-        int rows = getRows();
-
-//        if (isAlive(x, y)) {
-//            count++;
-//        }
-
-//        //left
-//        if (isAlive((x - 1) % rows , y)) {
-//            count++;
-//        }
-
-        //up
-        if (isAlive(x , (y + 1) % cols)) {
-            count++;
-        }
-//
-//        //right
-//        if (isAlive((x + 1) % rows , y)) {
-//            count++;
-//        }
-
-//        //down
-//        if (isAlive(x , (y - 1) % cols)) {
-//            count++;
-//        }
-
-        return count;
-    }
 }

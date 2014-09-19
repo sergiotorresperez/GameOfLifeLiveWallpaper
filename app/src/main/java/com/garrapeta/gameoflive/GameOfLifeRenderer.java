@@ -170,8 +170,8 @@ public class GameOfLifeRenderer {
     }
 
     private void drawNeighbours(Canvas canvas, int x, int y) {
-        int count = world.getAliveNeighbours(x, y);
-        canvas.drawText(String.valueOf(count), x * SPACING, y * SPACING, paint);
+        int count = world.getLivingNeighbours(x, y);
+        canvas.drawText(String.valueOf(count), x * SPACING, (y + 1) * SPACING, paint);
     }
 
 }
