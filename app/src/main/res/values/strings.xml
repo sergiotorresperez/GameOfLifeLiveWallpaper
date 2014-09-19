@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">GameOfLive</string>
+    <string name="app_name">Game of Live</string>
     <string name="description">Game of Life live wallpaper</string>
+
+    <string name="pref_key_touch">touch</string>
+    <string name="pref_key_numbers">numbers</string>
+    <string name="pref_key_grid">grid</string>
+    <string name="pref_key_period">perdiod</string>
 </resources>

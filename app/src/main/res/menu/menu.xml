@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/playpause"
+        android:title="Play Pause"
+        android:showAsAction="always"/>
+    <item android:id="@+id/preferences"
+        android:title="Preferences"
+        android:showAsAction="always"/>
+</menu>

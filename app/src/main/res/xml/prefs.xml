@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
-        android:key="touch"
+        android:key="@string/pref_key_touch"
         android:title="Enable Touch"></CheckBoxPreference>
+
+    <CheckBoxPreference
+        android:key="@string/pref_key_grid"
+        android:title="Draw grid"></CheckBoxPreference>
+
+    <CheckBoxPreference
+        android:key="@string/pref_key_numbers"
+        android:title="Draw numbers"></CheckBoxPreference>
+
+
     <EditTextPreference
-        android:key="numberOfCircles"
-        android:title="Number of Circles"></EditTextPreference>
+        android:inputType="number"
+        android:key="@string/pref_key_period"
+        android:title="Period of animation (milliseconds)"></EditTextPreference>
 </PreferenceScreen>

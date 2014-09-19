@@ -1,10 +1,12 @@
 package com.garrapeta.gameoflive;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -12,21 +14,26 @@ public class GameOfLifeRenderer {
 
 
     private static final int SPACING = 50;
-    private static final long RENDER_DELAY = 200;
-
     private SurfaceHolderProvider surfaceHolderProvider;
+
     private Paint paint = new Paint();
     private boolean visible = true;
-    private boolean touchEnabled;
     private final Handler handler = new Handler();
+
     private final Runnable drawRunner;
+
+    private static int renderPeriod;
+    private boolean touchEnabled;
+    private boolean drawGrid;
+    private boolean drawNumbers;
 
     private final GameOfLifeWorld world;
     private boolean isPlaying = true;
 
-    public GameOfLifeRenderer(SharedPreferences prefs, SurfaceHolderProvider surfaceHolderProvider) {
+    public GameOfLifeRenderer(Context context, SurfaceHolderProvider surfaceHolderProvider) {
         this.surfaceHolderProvider = surfaceHolderProvider;
-        touchEnabled = prefs.getBoolean("touch", false);
+        setConfiguration(context);
+
         paint.setAntiAlias(true);
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.STROKE);
@@ -43,6 +50,15 @@ public class GameOfLifeRenderer {
         };
 
         handler.post(drawRunner);
+    }
+
+    public void setConfiguration(Context context) {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        touchEnabled = prefs.getBoolean(context.getString(R.string.pref_key_touch), true);
+        drawGrid = prefs.getBoolean(context.getString(R.string.pref_key_grid), true);
+        drawNumbers = prefs.getBoolean(context.getString(R.string.pref_key_numbers), false);
+        renderPeriod = prefs.getInt(context.getString(R.string.pref_key_period), 300);
     }
 
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
@@ -77,8 +93,12 @@ public class GameOfLifeRenderer {
         }
     }
 
-    public void setPlay(boolean playing) {
+    public void setPlaying(boolean playing) {
         this.isPlaying = playing;
+    }
+
+    public boolean isPlaying() {
+        return this.isPlaying;
     }
 
     private void processFrame() {
@@ -106,15 +126,20 @@ public class GameOfLifeRenderer {
         }
         handler.removeCallbacks(drawRunner);
         if (visible) {
-            handler.postDelayed(drawRunner, RENDER_DELAY);
+            handler.postDelayed(drawRunner, renderPeriod);
         }
     }
 
     private void drawWorld(Canvas canvas) {
         canvas.drawColor(Color.BLACK);
-        drawGrid(canvas);
+        if (drawGrid) {
+            drawGrid(canvas);
+        }
         drawCells(canvas);
-        drawNeighbours(canvas);
+
+        if (drawNumbers) {
+            drawNeighbours(canvas);
+        }
     }
 
     private void drawGrid(Canvas canvas) {
@@ -174,4 +199,8 @@ public class GameOfLifeRenderer {
         canvas.drawText(String.valueOf(count), x * SPACING, (y + 1) * SPACING, paint);
     }
 
+    public static interface SurfaceHolderProvider {
+
+        public SurfaceHolder getSurfaceHolder();
+    }
 }

@@ -1,13 +1,11 @@
 package com.garrapeta.gameoflive;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.service.wallpaper.WallpaperService;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
 
-public class GameOfLifeService extends WallpaperService {
+public class GameOfLifeWallpaperService extends WallpaperService {
 
     @Override
     public Engine onCreateEngine() {
@@ -17,15 +15,12 @@ public class GameOfLifeService extends WallpaperService {
     /**
      * Wallpaper engine
      */
-    private class MyWallpaperEngine extends Engine implements SurfaceHolderProvider {
+    private class MyWallpaperEngine extends Engine implements GameOfLifeRenderer.SurfaceHolderProvider {
 
         final GameOfLifeRenderer gameOfLifeRenderer;
 
         public MyWallpaperEngine() {
-            SharedPreferences prefs = PreferenceManager
-                    .getDefaultSharedPreferences(GameOfLifeService.this);
-
-            gameOfLifeRenderer = new GameOfLifeRenderer(prefs, this);
+            gameOfLifeRenderer = new GameOfLifeRenderer(GameOfLifeWallpaperService.this, this);
         }
 
         @Override
