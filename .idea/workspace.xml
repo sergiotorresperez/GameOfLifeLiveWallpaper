@@ -53,10 +53,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12583892" vertical-offset="0" max-vertical-offset="810">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
               <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
               <folding>
                 <element signature="e#470#488#0" expanded="true" />
@@ -75,16 +75,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameOfLifeRenderer.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GameOfLifeRenderer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/GameOfLifeRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1107" max-vertical-offset="3060">
-              <caret line="99" column="32" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
+            <state vertical-scroll-proportion="-3.8825502" vertical-offset="2659" max-vertical-offset="3255">
+              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
               <folding>
-                <element signature="e#1670#1712#0" expanded="true" />
-                <element signature="e#1757#1798#0" expanded="true" />
-                <element signature="e#1846#1890#0" expanded="true" />
-                <element signature="e#1936#1979#0" expanded="true" />
+                <element signature="e#1880#1922#0" expanded="true" />
+                <element signature="e#1967#2008#0" expanded="true" />
+                <element signature="e#2056#2100#0" expanded="true" />
+                <element signature="e#2146#2189#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -864,11 +864,11 @@
         <option value="$PROJECT_DIR$/app/src/main/res/xml/menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/PreferencesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/GameOfLifeRenderer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/GameOfLifeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_game_of_life.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/GameOfLifeRenderer.java" />
       </list>
     </option>
   </component>
@@ -1554,10 +1554,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2310" max-vertical-offset="2745">
           <caret line="154" column="9" selection-start-line="154" selection-start-column="9" selection-end-line="154" selection-end-column="9" />
           <folding>
-            <element signature="e#1670#1712#0" expanded="true" />
-            <element signature="e#1757#1798#0" expanded="true" />
-            <element signature="e#1846#1890#0" expanded="true" />
-            <element signature="e#1936#1979#0" expanded="true" />
+            <element signature="e#1880#1922#0" expanded="true" />
+            <element signature="e#1967#2008#0" expanded="true" />
+            <element signature="e#2056#2100#0" expanded="true" />
+            <element signature="e#2146#2189#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1617,10 +1617,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1354" max-vertical-offset="2340">
           <caret line="117" column="13" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
           <folding>
-            <element signature="e#1670#1712#0" expanded="true" />
-            <element signature="e#1757#1798#0" expanded="true" />
-            <element signature="e#1846#1890#0" expanded="true" />
-            <element signature="e#1936#1979#0" expanded="true" />
+            <element signature="e#1880#1922#0" expanded="true" />
+            <element signature="e#1967#2008#0" expanded="true" />
+            <element signature="e#2056#2100#0" expanded="true" />
+            <element signature="e#2146#2189#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1681,10 +1681,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="750">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#1670#1712#0" expanded="true" />
-            <element signature="e#1757#1798#0" expanded="true" />
-            <element signature="e#1846#1890#0" expanded="true" />
-            <element signature="e#1936#1979#0" expanded="true" />
+            <element signature="e#1880#1922#0" expanded="true" />
+            <element signature="e#1967#2008#0" expanded="true" />
+            <element signature="e#2056#2100#0" expanded="true" />
+            <element signature="e#2146#2189#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1755,19 +1755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/GameOfLifeRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1107" max-vertical-offset="3060">
-          <caret line="99" column="32" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
-          <folding>
-            <element signature="e#1670#1712#0" expanded="true" />
-            <element signature="e#1757#1798#0" expanded="true" />
-            <element signature="e#1846#1890#0" expanded="true" />
-            <element signature="e#1936#1979#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/GameOfLifeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1695">
@@ -1823,10 +1810,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12583892" vertical-offset="0" max-vertical-offset="810">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
           <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
           <folding>
             <element signature="e#470#488#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/garrapeta/gameoflive/GameOfLifeRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8825502" vertical-offset="2659" max-vertical-offset="3255">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+          <folding>
+            <element signature="e#1880#1922#0" expanded="true" />
+            <element signature="e#1967#2008#0" expanded="true" />
+            <element signature="e#2056#2100#0" expanded="true" />
+            <element signature="e#2146#2189#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -2,6 +2,8 @@ package com.garrapeta.gameoflive;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -29,11 +31,12 @@ public class GameOfLifeRenderer {
 
     private final GameOfLifeWorld world;
     private boolean isPlaying = true;
+    private Bitmap backgroundBitmap;
 
     public GameOfLifeRenderer(Context context, SurfaceHolderProvider surfaceHolderProvider) {
         this.surfaceHolderProvider = surfaceHolderProvider;
         setConfiguration(context);
-
+        backgroundBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.skin_tile);
         paint.setAntiAlias(true);
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.STROKE);
@@ -113,6 +116,7 @@ public class GameOfLifeRenderer {
     }
 
     private void drawWorld() {
+
         SurfaceHolder holder = surfaceHolderProvider.getSurfaceHolder();
         Canvas canvas = null;
         try {
@@ -132,6 +136,9 @@ public class GameOfLifeRenderer {
 
     private void drawWorld(Canvas canvas) {
         canvas.drawColor(Color.BLACK);
+
+        drawBackground(canvas);
+
         if (drawGrid) {
             drawGrid(canvas);
         }
@@ -139,6 +146,14 @@ public class GameOfLifeRenderer {
 
         if (drawNumbers) {
             drawNeighbours(canvas);
+        }
+    }
+
+    private void drawBackground(Canvas canvas) {
+        for (int i = 0; i < canvas.getWidth(); i += backgroundBitmap.getWidth()) {
+            for (int j = 0; j < canvas.getHeight(); j += backgroundBitmap.getHeight()) {
+                canvas.drawBitmap(backgroundBitmap, i, j, paint);
+            }
         }
     }
 
@@ -160,7 +175,7 @@ public class GameOfLifeRenderer {
     }
 
     private void drawCells(Canvas canvas) {
-        paint.setColor(Color.CYAN);
+        paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL);
 
         int cols = world.getCols();
