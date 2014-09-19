@@ -5,17 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameOfLifeRenderer {
 
 
     private static final int SPACING = 50;
+    private static final long RENDER_DELAY = 200;
 
     private SurfaceHolderProvider surfaceHolderProvider;
     private Paint paint = new Paint();
@@ -25,6 +22,7 @@ public class GameOfLifeRenderer {
     private final Runnable drawRunner;
 
     private final GameOfLifeWorld world;
+    private boolean isPlaying = true;
 
     public GameOfLifeRenderer(SharedPreferences prefs, SurfaceHolderProvider surfaceHolderProvider) {
         this.surfaceHolderProvider = surfaceHolderProvider;
@@ -40,8 +38,7 @@ public class GameOfLifeRenderer {
         drawRunner = new Runnable() {
             @Override
             public void run() {
-                Log.i("stp", "frame");
-                draw();
+                processFrame();
             }
         };
 
@@ -74,16 +71,34 @@ public class GameOfLifeRenderer {
     public void onTouchEvent(MotionEvent event) {
         if (!touchEnabled) {
         }
-        return;
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            world.onCellClicked((int) (event.getX() / SPACING), (int) (event.getY() / SPACING));
+            processFrame();
+        }
     }
 
-    private void draw() {
+    public void setPlay(boolean playing) {
+        this.isPlaying = playing;
+    }
+
+    private void processFrame() {
+        evolveWorld();
+        drawWorld();
+    }
+
+    private void evolveWorld() {
+        if (isPlaying) {
+            world.step();
+        }
+    }
+
+    private void drawWorld() {
         SurfaceHolder holder = surfaceHolderProvider.getSurfaceHolder();
         Canvas canvas = null;
         try {
             canvas = holder.lockCanvas();
             if (canvas != null) {
-                draw(canvas);
+                drawWorld(canvas);
             }
         } finally {
             if (canvas != null)
@@ -91,14 +106,15 @@ public class GameOfLifeRenderer {
         }
         handler.removeCallbacks(drawRunner);
         if (visible) {
-            handler.postDelayed(drawRunner, 2000);
+            handler.postDelayed(drawRunner, RENDER_DELAY);
         }
     }
 
-    private void draw(Canvas canvas) {
-        Log.i("stp", "draw in canvas");
+    private void drawWorld(Canvas canvas) {
         canvas.drawColor(Color.BLACK);
         drawGrid(canvas);
+        drawCells(canvas);
+        drawNeighbours(canvas);
     }
 
     private void drawGrid(Canvas canvas) {
@@ -116,6 +132,46 @@ public class GameOfLifeRenderer {
             int startY = j * SPACING;
             canvas.drawLine(0, startY, gridWidth, startY, paint);
         }
+    }
+
+    private void drawCells(Canvas canvas) {
+        paint.setColor(Color.CYAN);
+        paint.setStyle(Paint.Style.FILL);
+
+        int cols = world.getCols();
+        int rows = world.getRows();
+
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                drawCell(canvas, i, j);
+            }
+        }
+    }
+
+    private void drawCell(Canvas canvas, int x, int y) {
+        boolean alive = world.isAlive(x, y);
+        if (alive) {
+            canvas.drawRect(x * SPACING, y * SPACING, (x + 1) * SPACING, (y + 1) * SPACING, paint);
+        }
+    }
+
+    private void drawNeighbours(Canvas canvas) {
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(SPACING / 2);
+
+        int cols = world.getCols();
+        int rows = world.getRows();
+
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                drawNeighbours(canvas, i, j);
+            }
+        }
+    }
+
+    private void drawNeighbours(Canvas canvas, int x, int y) {
+        int count = world.getAliveNeighbours(x, y);
+        canvas.drawText(String.valueOf(count), x * SPACING, y * SPACING, paint);
     }
 
 }

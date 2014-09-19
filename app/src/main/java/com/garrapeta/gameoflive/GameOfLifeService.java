@@ -19,30 +19,30 @@ public class GameOfLifeService extends WallpaperService {
      */
     private class MyWallpaperEngine extends Engine implements SurfaceHolderProvider {
 
-        final GameOfLifeRenderer gameOfLife;
+        final GameOfLifeRenderer gameOfLifeRenderer;
 
         public MyWallpaperEngine() {
             SharedPreferences prefs = PreferenceManager
                     .getDefaultSharedPreferences(GameOfLifeService.this);
 
-            gameOfLife = new GameOfLifeRenderer(prefs, this);
+            gameOfLifeRenderer = new GameOfLifeRenderer(prefs, this);
         }
 
         @Override
         public void onVisibilityChanged(boolean visible) {
-            gameOfLife.onVisibilityChanged(visible);
+            gameOfLifeRenderer.onVisibilityChanged(visible);
         }
 
         @Override
         public void onSurfaceCreated(SurfaceHolder holder) {
             super.onSurfaceCreated(holder);
-            gameOfLife.surfaceCreated(holder);
+            gameOfLifeRenderer.surfaceCreated(holder);
         }
 
         @Override
         public void onSurfaceDestroyed(SurfaceHolder holder) {
             super.onSurfaceDestroyed(holder);
-            gameOfLife.surfaceDestroyed(holder);
+            gameOfLifeRenderer.surfaceDestroyed(holder);
         }
 
         @Override
@@ -50,13 +50,13 @@ public class GameOfLifeService extends WallpaperService {
                                      int width, int height) {
 
             super.onSurfaceChanged(holder, format, width, height);
-            gameOfLife.surfaceChanged(holder, format, width, height);
+            gameOfLifeRenderer.surfaceChanged(holder, format, width, height);
         }
 
         @Override
         public void onTouchEvent(MotionEvent event) {
             super.onTouchEvent(event);
-            gameOfLife.onTouchEvent(event);
+            gameOfLifeRenderer.onTouchEvent(event);
         }
 
     }
