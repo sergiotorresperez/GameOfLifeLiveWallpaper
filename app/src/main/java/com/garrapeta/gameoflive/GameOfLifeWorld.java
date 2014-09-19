@@ -1,6 +1,8 @@
 package com.garrapeta.gameoflive;
 
 
+import com.garrapeta.gameoflive.pattern.BugThingPattern;
+
 import java.util.Arrays;
 
 public class GameOfLifeWorld {
@@ -27,13 +29,7 @@ public class GameOfLifeWorld {
     }
 
     private void init() {
-        for (int i = 0; i < cols; i++) {
-            for (int j = 0; j < rows; j++) {
-                if (i % 2 == 0 && j % 3 == 0) {
-                    setAlive(i, j, true, matrix);
-                }
-            }
-        }
+        new BugThingPattern().addPatternCentered(this);
     }
 
     public int getCols() {
@@ -52,8 +48,12 @@ public class GameOfLifeWorld {
         return m[x][y];
     }
 
+    public void setAlive(int x, int y, boolean alive) {
+        setAlive(x, y, alive, matrix);
+    }
+
     private void setAlive(int x, int y, boolean alive, boolean[][] m) {
-        m[x][y] = alive;
+        m[x % m.length][y % m[0].length] = alive;
     }
 
     public int getLivingNeighbours(int x, int y) {
