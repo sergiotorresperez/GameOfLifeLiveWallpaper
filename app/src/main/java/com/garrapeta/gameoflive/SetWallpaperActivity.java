@@ -13,7 +13,7 @@ public class SetWallpaperActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout);
+        setContentView(R.layout.activity_set_wallpaper);
     }
 
     public void onClick(View view) {
