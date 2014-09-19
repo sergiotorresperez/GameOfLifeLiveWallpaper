@@ -11,14 +11,14 @@ import android.view.View;
 
 public class GameOfLifeActivity extends Activity implements View.OnTouchListener, SurfaceHolderProvider, SurfaceHolder.Callback {
 
-    private GameOfLife gameOfLifeCallback;
+    private GameOfLifeRenderer gameOfLifeCallback;
     private SurfaceView surfaceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_of_life);
-        gameOfLifeCallback = new GameOfLife(PreferenceManager.getDefaultSharedPreferences(this), this);
+        gameOfLifeCallback = new GameOfLifeRenderer(PreferenceManager.getDefaultSharedPreferences(this), this);
 
         surfaceView = (SurfaceView) findViewById(R.id.game_of_life_surface);
         surfaceView.setOnTouchListener(this);

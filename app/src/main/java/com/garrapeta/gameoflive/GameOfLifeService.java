@@ -1,17 +1,10 @@
 package com.garrapeta.gameoflive;
 
 import android.content.SharedPreferences;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.service.wallpaper.WallpaperService;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class GameOfLifeService extends WallpaperService {
@@ -26,13 +19,13 @@ public class GameOfLifeService extends WallpaperService {
      */
     private class MyWallpaperEngine extends Engine implements SurfaceHolderProvider {
 
-        final GameOfLife gameOfLife;
+        final GameOfLifeRenderer gameOfLife;
 
         public MyWallpaperEngine() {
             SharedPreferences prefs = PreferenceManager
                     .getDefaultSharedPreferences(GameOfLifeService.this);
 
-            gameOfLife = new GameOfLife(prefs, this);
+            gameOfLife = new GameOfLifeRenderer(prefs, this);
         }
 
         @Override

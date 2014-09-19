@@ -12,7 +12,7 @@ import android.view.SurfaceHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameOfLife {
+public class CirclesRenderer {
 
 
     public class MyPoint {
@@ -41,7 +41,7 @@ public class GameOfLife {
 
     private final Runnable drawRunner;
 
-    public GameOfLife(SharedPreferences prefs, SurfaceHolderProvider surfaceHolderProvider) {
+    public CirclesRenderer(SharedPreferences prefs, SurfaceHolderProvider surfaceHolderProvider) {
         this.surfaceHolderProvider = surfaceHolderProvider;
         maxNumber = Integer
                 .valueOf(prefs.getString("numberOfCircles", "4"));
