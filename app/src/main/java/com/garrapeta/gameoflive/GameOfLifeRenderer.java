@@ -73,7 +73,7 @@ public class GameOfLifeRenderer {
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
             world.onCellClicked((int) (event.getX() / SPACING), (int) (event.getY() / SPACING));
-            processFrame();
+            drawWorld();
         }
     }
 
