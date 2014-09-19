@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GameOfLive</string>
+    <string name="description">Game of Life live wallpaper</string>
 </resources>
